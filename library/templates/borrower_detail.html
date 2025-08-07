@@ -1,0 +1,15 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ borrower.name }}</h2>
+    <p><strong>name:</strong>{{ borrowers.name }}</p>
+    <p><strong>Email:</strong> {{ borrowers.email }}</p>
+    <p><strong>Joined Date:</strong> {{ borrowers.joined_date }}</p>
+
+    <a href="{% url 'borrower-edit' borrowers.pk %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'borrower-delete' borrowers.pk %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'borrower-list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+{% endblock %}

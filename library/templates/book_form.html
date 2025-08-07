@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+
+{% block title %} {{ view.object|default:"New Book" }} {% endblock %}
+
+{% block content %}
+  <h2>{% if view.object %}Edit Book{% else %}Add New Book{% endif %}</h2>
+  
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
+  <p><a href="{% url 'book-list' %}">Back to book list</a></p>
+{% endblock %}

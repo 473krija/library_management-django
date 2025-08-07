@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Borrower List</h2>
+    <a href="{% url 'borrower-add' %}" class="btn btn-primary mb-3">Add Borrower</a>
+
+    <ul class="list-group">
+        {% for borrower in borrowers %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="{% url 'borrower-detail' borrower.pk %}">
+                    {{ borrower.name }}
+                </a>
+                <span>
+                    <a href="{% url 'borrower-edit' borrower.pk %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'borrower-delete' borrower.pk %}" class="btn btn-sm btn-danger">Delete</a>
+                </span>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No borrowers found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

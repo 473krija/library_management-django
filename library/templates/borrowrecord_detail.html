@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Borrow Record Details</h2>
+    <p><strong>Book:</strong> {{ borrowrecords.book.title }}</p>
+    <p><strong>Borrower:</strong> {{ borrowrecords.borrower.name }}</p>
+    <p><strong>Borrow Date:</strong> {{ borrowrecords.borrow_date }}</p>
+    <p><strong>Return Date:</strong> {{ borrowrecords.return_date }}</p>
+    
+    <a href="{% url 'borrowrecord-edit' borrowrecords.pk %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'borrowrecord-delete' borrowrecords.pk %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'borrowrecord-list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+{% endblock %}

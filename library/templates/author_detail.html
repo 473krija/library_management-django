@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ authors.name }}</h2>
+    <p><strong>Birt Date:</strong>{{ authors.birth_date }}</p>
+    <p><strong>Biography:</strong> {{ authors.biography }}</p>
+
+    <a href="{% url 'author-edit' authors.pk %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'author-delete' authors.pk %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'author-list' %}" class="btn btn-secondary">Back to List</a>
+</div>
+{% endblock %}
