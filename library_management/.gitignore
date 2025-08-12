@@ -1,0 +1,25 @@
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environment
+venv/
+env/
+
+# SQLite database
+db.sqlite3
+
+# VS Code settings
+.vscode/
+
+# Django migrations cache (optional, but keep if you want to reset migrations often)
+*/migrations/__pycache__/
+*/migrations/*.pyc
+
+# OS-specific
+.DS_Store
+Thumbs.db
