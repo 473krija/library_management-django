@@ -43,8 +43,10 @@ class BorrowRecordAdmin(admin.ModelAdmin):
         "return_date",
         
     )
+
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
 admin.site.register(Borrower, BorrowerAdmin)
 admin.site.register(BorrowRecord, BorrowRecordAdmin)
+admin.site.register(Snippet)
 

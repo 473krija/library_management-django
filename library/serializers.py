@@ -1,6 +1,8 @@
 
 from rest_framework import serializers
 from .models import Book, Borrower, BorrowRecord, Author
+from .models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+
 
 # Serializer for Book model
 class BookSerializer(serializers.HyperlinkedModelSerializer):
@@ -31,3 +33,8 @@ class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Author
         fields = '__all__'
+
+class SnippetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Snippet
+        fields = ['id', 'title', 'code', 'linenos', 'language', 'style', 'highlighted']
