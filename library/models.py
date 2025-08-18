@@ -109,6 +109,22 @@ class Snippet(models.Model):
     def __str__(self):
         return self.title or f"Snippet {self.id}"
 
+class category(models.Model):
+    name = models.CharField(max_length=100, unique = True)
+    books = models.ManyToManyField('Book',  related_name = 'categories', blank = True)
+
+    def __str__(self):
+        return self.name
+    
+class BookDetail(models.Model):
+    book = models.OneToOneField('Book', on_delete = models.CASCADE, related_name = 'detail')
+    summary = models.TextField(blank =True)
+    pages = models.PositiveIntegerField(default = 0)
+
+    def __str__(self):
+        return f"Details of {self.title}"
+
+
   
         
 

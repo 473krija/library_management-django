@@ -17,9 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 #from library.views import BookViewSet, AuthorViewSet, BorrowerViewSet, BorrowRecordViewSet
-#from rest_framework import routers
+from rest_framework import routers
 
-# router = routers.DefaultRouter()
+router = routers.DefaultRouter()
 # router.register(r'books', BookViewSet)
 # router.register(r'authors', AuthorViewSet)
 # router.register(r'borrowers', BorrowerViewSet)
@@ -28,7 +28,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('library.urls')),
-    #path('api/', include(router.urls)),
-    #path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('', include('library_members.urls')),
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 
 ]
