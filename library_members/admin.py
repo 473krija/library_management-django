@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MemberProfile, ReadingClub
+from .models import MemberProfile, ReadingClub, Fine
 
 
 @admin.register(MemberProfile)
@@ -21,3 +21,4 @@ class ReadingClubAdmin(admin.ModelAdmin):
         return ", ".join([b.title for b in obj.books.all()])
     get_books.short_description = "Books"
 
+admin.site.register(Fine)

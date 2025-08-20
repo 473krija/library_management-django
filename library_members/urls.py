@@ -8,4 +8,6 @@ router.register(r'clubs', ReadingClubViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path('api/fines/', FineListCreateView.as_view(), name='fine_list_create'),
+    path('api/fines/<int:pk>/', FineDetailView.as_view(), name='fine_detail'),
 ]
