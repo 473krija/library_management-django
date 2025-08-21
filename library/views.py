@@ -6,6 +6,7 @@ from .models import *
 from .serializers import *
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
 from django.shortcuts import get_object_or_404 
 from rest_framework import status
 #from django.shortcuts import render
@@ -151,8 +152,11 @@ from rest_framework import status
 def book_list(request):
     if request.method == 'GET':
         books = Book.objects.all()
-        serializer = BookSerializer(books, many=True, context={'request': request})
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginator.page_size = 5
+        paginated_books = paginator.paginate_queryset(books, request)
+        serializer = BookSerializer(paginated_books, many=True, context={'request': request})
+        return paginator.get_paginated_response(serializer.data)
     elif request.method == 'POST':
         serializer = BookSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
@@ -181,8 +185,11 @@ def book_detail(request, pk):
 def author_list(request):
     if request.method == 'GET':
         authors = Author.objects.all()
-        serializer = AuthorSerializer(authors, many=True, context={'request': request})
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginator.page_size = 5
+        paginated_authors = paginator.paginate_queryset(authors, request)
+        serializer = AuthorSerializer(paginated_authors, many=True, context={'request': request})
+        return paginator.get_paginated_response(serializer.data)
     elif request.method == 'POST':
         serializer = AuthorSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
@@ -211,8 +218,11 @@ def author_detail(request, pk):
 def borrower_list(request):
     if request.method == 'GET':
         borrowers = Borrower.objects.all()
-        serializer = BorrowerSerializer(borrowers, many=True, context={'request': request})
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginator.page_size = 5
+        paginated_borrowers = paginator.paginate_queryset(borrowers, request)
+        serializer = BorrowerSerializer(paginated_borrowers, many=True, context={'request': request})
+        return paginator.get_paginated_response(serializer.data)
     elif request.method == 'POST':
         serializer = BorrowerSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
@@ -241,8 +251,11 @@ def borrower_detail(request, pk):
 def borrowrecord_list(request):
     if request.method == 'GET':
         borrowrecords = BorrowRecord.objects.all()
-        serializer = BorrowRecordSerializer(borrowrecords, many=True, context={'request': request})
-        return Response(serializer.data)
+        paginator = PageNumberPagination()
+        paginator.page_size = 5
+        paginated_borrowrecords = paginator.paginate_queryset(borrowrecords, request)
+        serializer = BorrowRecordSerializer(paginated_borrowrecords, many=True, context={'request': request})
+        return paginator.get_paginated_response(serializer.data)
     elif request.method == 'POST':
         serializer = BorrowRecordSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
