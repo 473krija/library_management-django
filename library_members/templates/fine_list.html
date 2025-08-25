@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fines</title>
+</head>
+<body>
+    <h1>Fines</h1>
+    <ul>
+        {% for fine in fines %}
+            <li>
+                <a href="{% url 'fine_detail' fine.id %}">
+                    {{ fine.borrower.name }} - ₹{{ fine.amount }} ({{ fine.reason }})
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

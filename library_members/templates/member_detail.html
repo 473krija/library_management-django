@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ member.borrower.name }}</title>
+</head>
+<body>
+    <h1>{{ member.borrower.name }}</h1>
+    <p>Phone: {{ member.phone_number }}</p>
+    <p>Address: {{ member.address }}</p>
+    <p><strong>Borrower:</strong> {{ member.borrower.name }}</p>
+    <a href="{% url 'member_list' %}">Back to Members</a>
+</body>
+</html>
+

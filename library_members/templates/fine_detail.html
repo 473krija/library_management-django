@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fine - {{ fine.borrower.name }}</title>
+</head>
+<body>
+    <h1>Fine Details</h1>
+    <p><strong>Borrower:</strong> {{ fine.borrower.name }}</p>
+    <p><strong>Amount:</strong> ₹{{ fine.amount }}</p>
+    <p><strong>Reason:</strong> {{ fine.reason }}</p>
+    <p><strong>Status:</strong> {% if fine.paid %} Paid {% else %} Unpaid {% endif %}</p>
+    <a href="{% url 'fine_list' %}">Back to Fines</a>
+</body>
+</html>
+

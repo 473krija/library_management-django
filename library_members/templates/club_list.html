@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reading Clubs</title>
+</head>
+<body>
+    <h1>Reading Clubs</h1>
+    <ul>
+        {% for club in clubs %}
+            <li>
+                <a href="{% url 'club_detail' club.id %}">{{ club.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
