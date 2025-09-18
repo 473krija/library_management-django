@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import *
 
-class MemberProfileSerializer(serializers.HyperlinkedModelSerializer):
+class MemberProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = MemberProfile
         fields = "__all__"

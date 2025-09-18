@@ -5,31 +5,31 @@ from .models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
 
 
 # Serializer for Book model
-class BookSerializer(serializers.HyperlinkedModelSerializer):
-    author = serializers.SlugRelatedField(queryset=Author.objects.all(), slug_field= 'name')
+class BookSerializer(serializers.ModelSerializer):
+    author = serializers.PrimaryKeyRelatedField(queryset=Author.objects.all())
 
     class Meta:
         model = Book
-        fields = ['url', 'title', 'author', 'published_date', 'genre', 'available_copies']
+        fields = ['id', 'title', 'author', 'published_date', 'genre', 'available_copies']
 
 
 # Serializer for Borrower model
-class BorrowerSerializer(serializers.HyperlinkedModelSerializer):
+class BorrowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Borrower
         fields = ['url', 'id', 'name', 'email', 'joined_date']
 
 
 # Serializer for BorrowRecord model
-class BorrowRecordSerializer(serializers.HyperlinkedModelSerializer):
-    book = serializers.SlugRelatedField(queryset=Book.objects.all(), slug_field='title')
-    borrower = serializers.SlugRelatedField(queryset=Borrower.objects.all(), slug_field='name')
+class BorrowRecordSerializer(serializers.ModelSerializer):
+    book = serializers.PrimaryKeyRelatedField(queryset=Book.objects.all())
+    borrower = serializers.PrimaryKeyRelatedField(queryset=Borrower.objects.all())
 
     class Meta:
         model = BorrowRecord
         fields = ['url', 'id', 'book', 'borrower', 'borrow_date', 'return_date']
 
-class AuthorSerializer(serializers.HyperlinkedModelSerializer):
+class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
         fields = '__all__'
